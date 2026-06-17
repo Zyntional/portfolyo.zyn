@@ -47,7 +47,6 @@
             box-shadow: 2px 0 10px rgba(0,0,0,0.5);
         }
 
-        /* ESKİ ESKİ "Z." LOGO TARZINA GERİ DÖNÜŞ VE GELİŞTİRME */
         .logo {
             font-size: 2.2rem;
             font-weight: 800;
@@ -112,7 +111,7 @@
             display: block;
         }
 
-        /* İKİ SÜTUNLU DÜZEN (FLEXBOX) */
+        /* İKİ SÜTUNLU DÜZEN */
         .flex-container {
             display: flex;
             align-items: center;
@@ -126,7 +125,7 @@
             max-width: 650px;
         }
 
-        /* SAĞ TARAF GÖRSEL ALANI (YENİ SİBER GEÇİŞLİ ARKA PLAN) */
+        /* SAĞ TARAF GÖRSEL ALANI (YENİ OVAL VE YUMUŞAK GEÇİŞLİ DÜZEN) */
         .content-right {
             flex: 1;
             display: flex;
@@ -139,27 +138,27 @@
             position: relative;
             max-width: 480px;
             width: 100%;
-            border-radius: 16px;
+            border-radius: 16px; /* Kenarlar tamamen ovalleştirildi */
             overflow: hidden;
-            /* Sırıtan beyaz blok yerine sitenin renginden neona akan yumuşak geçiş */
-            background: linear-gradient(135deg, rgba(31, 40, 51, 0.4) 0%, rgba(11, 12, 16, 0.9) 100%);
-            box-shadow: 0 0 35px rgba(69, 243, 255, 0.1);
-            border: 1px solid rgba(69, 243, 255, 0.15);
-            transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
-            padding: 20px; /* Görsel içeride nefes alsın diye */
+            /* Beyazlığın bittiği yerde başlayıp yumuşakça siyah arka plana eriyen gölge efekti */
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 
+                        0 10px 40px rgba(0, 0, 0, 0.9), 
+                        0 0 25px rgba(69, 243, 255, 0.15);
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
 
         .hero-image-wrapper:hover {
             transform: translateY(-8px);
-            box-shadow: 0 0 45px rgba(69, 243, 255, 0.25);
-            border-color: rgba(69, 243, 255, 0.5);
+            box-shadow: 0 0 0 2px var(--accent-color), 
+                        0 15px 50px rgba(0, 0, 0, 0.95), 
+                        0 0 35px rgba(69, 243, 255, 0.3);
         }
 
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-            filter: drop-shadow(0 0 10px rgba(69, 243, 255, 0.15)); /* Görsele siber derinlik */
+            border-radius: 16px; /* Görselin kendisi de ovalleşsin diye */
         }
 
         /* METİNLER */
@@ -214,7 +213,7 @@
             box-shadow: 0 0 20px rgba(69, 243, 255, 0.4);
         }
 
-        /* YETENEKLER BÖLÜMÜ GRID */
+        /* YETENEKLER GRID */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -241,7 +240,7 @@
             line-height: 2;
         }
 
-        /* PROJELER BÖLÜMÜ GRID */
+        /* PROJELER GRID */
         .projects-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -249,12 +248,20 @@
             margin-top: 30px;
         }
 
+        /* Proje kartı link düzenlemesi */
+        .project-link {
+            text-decoration: none;
+            color: inherit;
+            display: block;
+        }
+
         .project-card {
             background-color: var(--card-bg);
             border: 1px solid #222629;
             border-radius: 8px;
             padding: 25px;
-            transition: transform 0.3s, border-color 0.3s;
+            height: 100%;
+            transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
@@ -263,6 +270,7 @@
         .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
+            box-shadow: 0 5px 15px rgba(69, 243, 255, 0.1);
         }
 
         .project-title {
@@ -336,7 +344,6 @@
 
     <!-- DIKEY SOL MENÜ -->
     <div class="sidebar">
-        <!-- Z. LOGOSU GERİ GELDİ -->
         <div class="logo" onclick="switchSection('home')">Z.</div>
         
         <ul class="nav-links">
@@ -355,9 +362,9 @@
             <div class="flex-container">
                 
                 <div class="content-left">
-                    <p class="hero-text">Merhaba, ben Can namıdiğer;</p>
+                    <p class="hero-text">Merhaba, ben Can namı diğer;</p>
                     <h1>Zyntional.dev</h1>
-                    <h2>Siber Güvenlik & Web & IoT Geliştiricisi | Google Developer Groups Üyesi</h2>
+                    <h2>Siber Güvenlik & Web & IoT Geliştiricisi | Google Geliştirici Grupları Üyesi</h2>
                     <p class="description">
                         Geleceğin güvenli sistem mimarileri ve siber savunma teknolojileri üzerinde çalışan bir geliştiriciyim. 
                         Web dünyasında işlevsel çözümler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber analizlerini yapıyorum.
@@ -366,8 +373,8 @@
                 </div>
 
                 <div class="content-right">
+                    <!-- Kenarları yumuşatılmış ve gölge efekti eklenmiş görsel alanı -->
                     <div class="hero-image-wrapper">
-                        <!-- Arka planı koyulaştırılmış hacker görsel alanı -->
                         <img src="undraw_hacker-mind_j91b.png" alt="Zyntional Hacker Mind" class="hero-image">
                     </div>
                 </div>
@@ -384,7 +391,7 @@
                     <h3>Siber Güvenlik</h3>
                     <ul class="skill-list">
                         <li>• Kali Linux</li>
-                        <li>• OSINT & Aircrack-ng</li>
+                        <li>• OSINT & Shodan</li>
                         <li>• Ağ Güvenliği Analizi</li>
                         <li>• CTF Çözümleri</li>
                     </ul>
@@ -419,21 +426,26 @@
             </div>
         </div>
 
-        <!-- 3. PROJELER SAYFASI -->
+        <!-- 3. PROJELER SAYFASI (SİBER KALKAN ARTIK TIKLANABİLİR LİNK) -->
         <div id="projects" class="section">
             <h1>Projeler</h1>
             <h2>Geliştirdiğim Öne Çıkan Çalışmalar</h2>
             <div class="projects-grid">
-                <div class="project-card">
-                    <div>
-                        <div class="project-title">Siber-Kalkan</div>
-                        <p class="project-desc">Siber güvenlik farkındalığı oluşturmak ve ağ savunmasını simüle etmek amacıyla geliştirdiğim siber güvenlik odaklı özel proje.</p>
+                
+                <!-- Siber-Kalkan Link Kartı (Buraya tıklandığında kendi sitene yönlendirir) -->
+                <a href="https://zyntional.dev" target="_blank" class="project-link">
+                    <div class="project-card">
+                        <div>
+                            <div class="project-title">Siber-Kalkan 🌐</div>
+                            <p class="project-desc">Siber güvenlik farkındalığı oluşturmak ve ağ savunmasını simüle etmek amacıyla geliştirdiğim siber güvenlik odaklı özel proje. Detaylar için tıklayın.</p>
+                        </div>
+                        <div class="project-tags">
+                            <span class="tag">CyberSecurity</span>
+                            <span class="tag">Linux</span>
+                            <span class="tag">Live Site</span>
+                        </div>
                     </div>
-                    <div class="project-tags">
-                        <span class="tag">CyberSecurity</span>
-                        <span class="tag">Linux</span>
-                    </div>
-                </div>
+                </a>
 
                 <div class="project-card">
                     <div>
