@@ -6,13 +6,13 @@
     <title>Zyntional.dev // Portfolio</title>
     <style>
         :root {
-            --bg-color: #0b0c10;
-            --sidebar-color: #1f2833;
-            --text-main: #c5a059;
+            /* Görseldeki o derin, zengin siber lacivert ve mavi tonları */
+            --bg-color: #020617;
+            --sidebar-color: rgba(15, 23, 42, 0.6);
             --text-light: #ffffff;
-            --text-muted: #c5c6c7;
-            --accent-color: #45f3ff; /* Neon cyan/mavi */
-            --card-bg: #11141a;
+            --text-muted: #94a3b8;
+            --accent-color: #38bdf8; /* Görseldeki parlak mavi tonu */
+            --card-bg: rgba(30, 41, 59, 0.4);
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
@@ -23,7 +23,19 @@
         }
 
         body {
+            /* image_53774e.jpg görselindeki gibi çoklu ışık kaynaklı siber atmosfer */
             background-color: var(--bg-color);
+            background-image: 
+                /* Sağ üstten sızan siber mavi/turkuaz ışık hüzmesi */
+                radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
+                /* Sol alttan vuran derin lacivert/mor siber ışık */
+                radial-gradient(circle at 15% 85%, rgba(29, 78, 216, 0.2) 0%, transparent 50%),
+                /* Görselin sol altındaki o hafif teknolojik devre/çizgi hissini veren CSS deseni */
+                linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px);
+            background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
+            background-attachment: fixed;
+            
             color: var(--text-light);
             font-family: var(--font-family);
             display: flex;
@@ -31,10 +43,13 @@
             overflow-x: hidden;
         }
 
-        /* SOL MENÜ (SIDEBAR) */
+        /* SOL MENÜ (SIDEBAR) - Görseldeki şeffaf ekranlar gibi semi-transparent yapıldı */
         .sidebar {
             width: 80px;
             background-color: var(--sidebar-color);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border-right: 1px solid rgba(56, 189, 248, 0.1);
             display: flex;
             flex-direction: column;
             align-items: center;
@@ -44,14 +59,13 @@
             bottom: 0;
             left: 0;
             z-index: 10;
-            box-shadow: 2px 0 10px rgba(0,0,0,0.5);
         }
 
         .logo {
             font-size: 2.2rem;
             font-weight: 800;
             color: var(--accent-color);
-            text-shadow: 0 0 12px rgba(69, 243, 255, 0.5);
+            text-shadow: 0 0 15px rgba(56, 189, 248, 0.6);
             margin-bottom: 50px;
             cursor: pointer;
             transition: transform 0.3s ease, text-shadow 0.3s ease;
@@ -61,7 +75,7 @@
 
         .logo:hover {
             transform: scale(1.15) rotate(-5deg);
-            text-shadow: 0 0 20px var(--accent-color);
+            text-shadow: 0 0 25px var(--accent-color);
         }
 
         .nav-links {
@@ -81,13 +95,13 @@
             letter-spacing: 1px;
             writing-mode: vertical-rl;
             transform: rotate(180deg);
-            transition: color 0.3s, transform 0.3s;
+            transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
             padding: 10px 0;
         }
 
         .nav-item:hover, .nav-item.active {
             color: var(--accent-color);
-            text-shadow: 0 0 8px var(--accent-color);
+            text-shadow: 0 0 10px var(--accent-color);
         }
 
         /* ANA İÇERİK ALANI */
@@ -101,7 +115,6 @@
             width: calc(100% - 80px);
         }
 
-        /* SAYFA BÖLÜMLERİ */
         .section {
             display: none;
             animation: fadeIn 0.5s ease forwards;
@@ -111,7 +124,6 @@
             display: block;
         }
 
-        /* İKİ SÜTUNLU DÜZEN */
         .flex-container {
             display: flex;
             align-items: center;
@@ -125,7 +137,7 @@
             max-width: 650px;
         }
 
-        /* SAĞ TARAF GÖRSEL ALANI (YENİ OVAL VE YUMUŞAK GEÇİŞLİ DÜZEN) */
+        /* SAĞ TARAF GÖRSEL ALANI */
         .content-right {
             flex: 1;
             display: flex;
@@ -134,31 +146,31 @@
             position: relative;
         }
 
+        /* Görseldeki siber holo-ekran havasını yakalayan çerçeve */
         .hero-image-wrapper {
             position: relative;
             max-width: 480px;
             width: 100%;
-            border-radius: 16px; /* Kenarlar tamamen ovalleştirildi */
+            border-radius: 16px;
             overflow: hidden;
-            /* Beyazlığın bittiği yerde başlayıp yumuşakça siyah arka plana eriyen gölge efekti */
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1), 
-                        0 10px 40px rgba(0, 0, 0, 0.9), 
-                        0 0 25px rgba(69, 243, 255, 0.15);
+            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 
+                        0 20px 50px rgba(0, 0, 0, 0.6), 
+                        0 0 40px rgba(56, 189, 248, 0.15);
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
 
         .hero-image-wrapper:hover {
-            transform: translateY(-8px);
-            box-shadow: 0 0 0 2px var(--accent-color), 
-                        0 15px 50px rgba(0, 0, 0, 0.95), 
-                        0 0 35px rgba(69, 243, 255, 0.3);
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.4), 
+                        0 25px 60px rgba(0, 0, 0, 0.8), 
+                        0 0 50px rgba(56, 189, 248, 0.3);
         }
 
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 16px; /* Görselin kendisi de ovalleşsin diye */
+            border-radius: 16px;
         }
 
         /* METİNLER */
@@ -167,6 +179,7 @@
             color: var(--accent-color);
             margin-bottom: 10px;
             font-family: monospace;
+            letter-spacing: 2px;
         }
 
         h1 {
@@ -174,13 +187,13 @@
             font-weight: 800;
             margin-bottom: 15px;
             letter-spacing: -1px;
-            background: linear-gradient(45deg, #fff, var(--text-muted));
+            background: linear-gradient(to right, #ffffff, #cbd5e1);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
         }
 
         h2 {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             color: var(--text-muted);
             margin-bottom: 30px;
             font-weight: 400;
@@ -188,32 +201,35 @@
 
         .description {
             font-size: 1.1rem;
-            color: #949a9e;
+            color: #94a3b8;
             line-height: 1.8;
             margin-bottom: 40px;
         }
 
-        /* BUTONLAR */
+        /* BUTONLAR - Görseldeki "READ MORE" butonunun modern siber versiyonu */
         .btn {
             display: inline-block;
-            padding: 12px 30px;
+            padding: 14px 35px;
             border: 2px solid var(--accent-color);
-            color: var(--accent-color);
+            color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            border-radius: 4px;
+            border-radius: 50px; /* Görseldeki gibi tam yuvarlak buton */
             transition: all 0.3s ease;
-            background: transparent;
+            background: rgba(56, 189, 248, 0.05);
             cursor: pointer;
+            box-shadow: 0 0 15px rgba(56, 189, 248, 0.1);
+            letter-spacing: 1px;
         }
 
         .btn:hover {
             background-color: var(--accent-color);
-            color: var(--bg-color);
-            box-shadow: 0 0 20px rgba(69, 243, 255, 0.4);
+            color: #020617;
+            box-shadow: 0 0 25px rgba(56, 189, 248, 0.45);
+            transform: translateY(-2px);
         }
 
-        /* YETENEKLER GRID */
+        /* YETENEKLER GRID - Cam Efektli (Glassmorphism) */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -223,9 +239,16 @@
 
         .skill-category {
             background-color: var(--card-bg);
-            border: 1px solid #222629;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
             padding: 25px;
-            border-radius: 8px;
+            border-radius: 12px;
+            transition: border-color 0.3s, transform 0.3s;
+        }
+
+        .skill-category:hover {
+            border-color: rgba(56, 189, 248, 0.3);
+            transform: translateY(-3px);
         }
 
         .skill-category h3 {
@@ -248,7 +271,6 @@
             margin-top: 30px;
         }
 
-        /* Proje kartı link düzenlemesi */
         .project-link {
             text-decoration: none;
             color: inherit;
@@ -257,8 +279,9 @@
 
         .project-card {
             background-color: var(--card-bg);
-            border: 1px solid #222629;
-            border-radius: 8px;
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
             padding: 25px;
             height: 100%;
             transition: transform 0.3s, border-color 0.3s, box-shadow 0.3s;
@@ -270,7 +293,7 @@
         .project-card:hover {
             transform: translateY(-5px);
             border-color: var(--accent-color);
-            box-shadow: 0 5px 15px rgba(69, 243, 255, 0.1);
+            box-shadow: 0 10px 25px rgba(56, 189, 248, 0.15);
         }
 
         .project-title {
@@ -280,7 +303,7 @@
         }
 
         .project-desc {
-            color: #949a9e;
+            color: var(--text-muted);
             font-size: 0.95rem;
             line-height: 1.6;
             margin-bottom: 20px;
@@ -294,7 +317,7 @@
 
         .tag {
             font-size: 0.8rem;
-            background-color: rgba(69, 243, 255, 0.1);
+            background-color: rgba(56, 189, 248, 0.1);
             color: var(--accent-color);
             padding: 4px 10px;
             border-radius: 4px;
@@ -312,11 +335,13 @@
             font-size: 1.2rem;
             color: var(--text-muted);
             text-decoration: none;
-            transition: color 0.3s;
+            transition: color 0.3s, transform 0.3s;
+            display: inline-block;
         }
 
         .contact-item:hover {
             color: var(--accent-color);
+            transform: translateX(5px);
         }
 
         /* ANIMASYON */
@@ -334,7 +359,7 @@
 
         @media (max-width: 768px) {
             h1 { font-size: 2.5rem; }
-            h2 { font-size: 1.5rem; }
+            h2 { font-size: 1.4rem; }
             .sidebar { width: 60px; }
             .main-content { margin-left: 60px; padding: 20px; width: calc(100% - 60px); }
         }
@@ -342,7 +367,7 @@
 </head>
 <body>
 
-    <!-- DIKEY SOL MENÜ -->
+    <!-- DIKEY SOL MENÜ (CAM EFEKTLİ BARKOD SEÇENEKLERİ) -->
     <div class="sidebar">
         <div class="logo" onclick="switchSection('home')">Z.</div>
         
@@ -369,11 +394,11 @@
                         Geleceğin güvenli sistem mimarileri ve siber savunma teknolojileri üzerinde çalışan bir geliştiriciyim. 
                         Web dünyasında işlevsel çözümler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber analizlerini yapıyorum.
                     </p>
+                    <!-- Görseldeki tasarıma uygun oval buton -->
                     <button class="btn" onclick="switchSection('projects')">Projelerim</button>
                 </div>
 
                 <div class="content-right">
-                    <!-- Kenarları yumuşatılmış ve gölge efekti eklenmiş görsel alanı -->
                     <div class="hero-image-wrapper">
                         <img src="undraw_hacker-mind_j91b.png" alt="Zyntional Hacker Mind" class="hero-image">
                     </div>
@@ -426,13 +451,12 @@
             </div>
         </div>
 
-        <!-- 3. PROJELER SAYFASI (SİBER KALKAN ARTIK TIKLANABİLİR LİNK) -->
+        <!-- 3. PROJELER SAYFASI -->
         <div id="projects" class="section">
             <h1>Projeler</h1>
             <h2>Geliştirdiğim Öne Çıkan Çalışmalar</h2>
             <div class="projects-grid">
                 
-                <!-- Siber-Kalkan Link Kartı (Buraya tıklandığında kendi sitene yönlendirir) -->
                 <a href="https://zyntional.dev" target="_blank" class="project-link">
                     <div class="project-card">
                         <div>
