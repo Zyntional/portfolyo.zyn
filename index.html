@@ -141,7 +141,7 @@
             position: relative;
         }
 
-        /* GÖRSELİN SIRITMASINI ÖNLEYEN SİBER ERİME ALANI */
+        /* GÖRSELİN DIŞINA GEÇİŞLİ BEYAZLIK VE SİBER PARLAMA EKLENEN YENİ ALAN */
         .hero-image-wrapper {
             position: relative;
             max-width: 500px;
@@ -149,28 +149,35 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            transition: transform 0.5s ease;
+            transition: transform 0.5s ease, filter 0.5s ease;
+            border-radius: 24px;
+            padding: 10px;
+            
+            /* Dışa doğru açılan yumuşak siber sis ve parıltı efekti */
+            box-shadow: 
+                0 0 40px 10px rgba(56, 189, 248, 0.15), 
+                inset 0 0 30px 5px rgba(255, 255, 255, 0.05);
+            background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
         }
 
         .hero-image-wrapper:hover {
             transform: translateY(-8px) scale(1.03);
+            filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.3));
         }
 
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 24px;
+            border-radius: 16px;
             
-            /* 1. SİHİRLİ DOKUNUŞ: Görselin beyaz piksellerini arka plana yedirir */
-            mix-blend-mode: lighten; 
-            opacity: 0.85;
+            /* Beyaz ve renkli hatları arka plan ışıklarıyla eriterek harmanlar */
+            mix-blend-mode: screen; 
+            opacity: 0.9;
 
-            /* 2. SİHİRLİ DOKUNUŞ: Görselin sert kenarlarını dairesel olarak yumuşatıp yok eder */
-            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-            mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
-            
-            filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
+            /* Resmi merkezden dışa doğru pürüzsüz bir gradyanla maskeler */
+            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 45%, rgba(0,0,0,0) 100%);
         }
 
         /* METİNLER */
@@ -367,6 +374,7 @@
 </head>
 <body>
 
+    <!-- DIKEY SOL MENÜ -->
     <div class="sidebar">
         <div class="logo" onclick="switchSection('home')">Z.</div>
         
@@ -378,8 +386,10 @@
         </ul>
     </div>
 
+    <!-- ANA İÇERİK -->
     <div class="main-content">
 
+        <!-- 1. GİRİŞ SAYFASI -->
         <div id="home" class="section active">
             <div class="flex-container">
                 
@@ -388,13 +398,14 @@
                     <h1>Zyntional.dev</h1>
                     <h2>Siber Güvenlik & Web & IoT Geliştiricisi | Google Geliştirici Grupları Üyesi</h2>
                     <p class="description">
-                        Geleceğin güvenli sistem mimarileri ve siber savunma teknolojileri üzerinde çalışan bir geliştiriciyim. 
+                        Geleceğin güvenli sistem mimarileri ve siber savunma technologiesi üzerinde çalışan bir geliştiriciyim. 
                         Web dünyasında işlevsel çözümler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber analizlerini yapıyorum.
                     </p>
                     <button class="btn" onclick="switchSection('projects')">Projelerim</button>
                 </div>
 
                 <div class="content-right">
+                    <!-- Geliştirilmiş, geçişli ve siber parlamalı görsel alanı -->
                     <div class="hero-image-wrapper">
                         <img src="undraw_hacker-mind_j91b.png" alt="Zyntional Hacker Mind" class="hero-image">
                     </div>
@@ -403,6 +414,7 @@
             </div>
         </div>
 
+        <!-- 2. YETENEKLER SAYFASI -->
         <div id="skills" class="section">
             <h1>Yetenekler</h1>
             <h2>Teknolojik Uzmanlık Alanlarım</h2>
@@ -446,6 +458,7 @@
             </div>
         </div>
 
+        <!-- 3. PROJELER SAYFASI -->
         <div id="projects" class="section">
             <h1>Projeler</h1>
             <h2>Geliştirdiğim Öne Çıkan Çalışmalar</h2>
@@ -490,6 +503,7 @@
             </div>
         </div>
 
+        <!-- 4. İLETİŞİM SAYFASI -->
         <div id="contact" class="section">
             <h1>İletişim</h1>
             <h2>Bana Ulaşın</h2>
@@ -502,6 +516,7 @@
 
     </div>
 
+    <!-- SAYFA GEÇİŞ SİHRİ -->
     <script>
         function switchSection(sectionId) {
             document.querySelectorAll('.section').forEach(sec => {
