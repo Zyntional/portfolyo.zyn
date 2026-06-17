@@ -47,31 +47,22 @@
             box-shadow: 2px 0 10px rgba(0,0,0,0.5);
         }
 
-        .logo-container {
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 2px solid var(--accent-color);
-            box-shadow: 0 0 10px rgba(69, 243, 255, 0.3);
+        /* ESKİ ESKİ "Z." LOGO TARZINA GERİ DÖNÜŞ VE GELİŞTİRME */
+        .logo {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--accent-color);
+            text-shadow: 0 0 12px rgba(69, 243, 255, 0.5);
             margin-bottom: 50px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-            background-color: #1a1c23;
-            display: flex;
-            align-items: center;
-            justify-content: center;
+            transition: transform 0.3s ease, text-shadow 0.3s ease;
+            user-select: none;
+            font-family: monospace;
         }
 
-        .logo-container:hover {
-            transform: scale(1.1);
-            box-shadow: 0 0 15px var(--accent-color);
-        }
-
-        .logo-img {
-            width: 130%;
-            height: auto;
-            object-fit: cover;
+        .logo:hover {
+            transform: scale(1.15) rotate(-5deg);
+            text-shadow: 0 0 20px var(--accent-color);
         }
 
         .nav-links {
@@ -135,7 +126,7 @@
             max-width: 650px;
         }
 
-        /* SAĞ TARAF GÖRSEL ALANI */
+        /* SAĞ TARAF GÖRSEL ALANI (YENİ SİBER GEÇİŞLİ ARKA PLAN) */
         .content-right {
             flex: 1;
             display: flex;
@@ -146,33 +137,29 @@
 
         .hero-image-wrapper {
             position: relative;
-            max-width: 450px;
+            max-width: 480px;
             width: 100%;
-            border-radius: 12px;
+            border-radius: 16px;
             overflow: hidden;
-            box-shadow: 0 0 30px rgba(69, 243, 255, 0.15);
-            border: 1px solid rgba(69, 243, 255, 0.2);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            /* Sırıtan beyaz blok yerine sitenin renginden neona akan yumuşak geçiş */
+            background: linear-gradient(135deg, rgba(31, 40, 51, 0.4) 0%, rgba(11, 12, 16, 0.9) 100%);
+            box-shadow: 0 0 35px rgba(69, 243, 255, 0.1);
+            border: 1px solid rgba(69, 243, 255, 0.15);
+            transition: transform 0.5s ease, box-shadow 0.5s ease, border-color 0.5s ease;
+            padding: 20px; /* Görsel içeride nefes alsın diye */
         }
 
         .hero-image-wrapper:hover {
-            transform: translateY(-5px) scale(1.02);
-            box-shadow: 0 0 40px rgba(69, 243, 255, 0.3);
-            border-color: var(--accent-color);
+            transform: translateY(-8px);
+            box-shadow: 0 0 45px rgba(69, 243, 255, 0.25);
+            border-color: rgba(69, 243, 255, 0.5);
         }
 
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-        }
-
-        .hero-image-wrapper::after {
-            content: "";
-            position: absolute;
-            top: 0; left: 0; right: 0; bottom: 0;
-            background: linear-gradient(45deg, rgba(11, 12, 16, 0.3), rgba(69, 243, 255, 0.05));
-            pointer-events: none;
+            filter: drop-shadow(0 0 10px rgba(69, 243, 255, 0.15)); /* Görsele siber derinlik */
         }
 
         /* METİNLER */
@@ -349,9 +336,9 @@
 
     <!-- DIKEY SOL MENÜ -->
     <div class="sidebar">
-        <div class="logo-container" onclick="switchSection('home')">
-            <img src="undraw_hacker-mind_j91b.png" alt="Logo" class="logo-img">
-        </div>
+        <!-- Z. LOGOSU GERİ GELDİ -->
+        <div class="logo" onclick="switchSection('home')">Z.</div>
+        
         <ul class="nav-links">
             <li class="nav-item active" id="nav-home" onclick="switchSection('home')">Giriş</li>
             <li class="nav-item" id="nav-skills" onclick="switchSection('skills')">Yetenekler</li>
@@ -368,18 +355,19 @@
             <div class="flex-container">
                 
                 <div class="content-left">
-                    <p class="hero-text">Merhaba, ben</p>
+                    <p class="hero-text">Merhaba, ben Can namıdiğer;</p>
                     <h1>Zyntional.dev</h1>
-                    <h2>Siber Güvenlik & Web & IoT Geliştiricisi | GDG Member</h2>
+                    <h2>Siber Güvenlik & Web & IoT Geliştiricisi | Google Developer Groups Üyesi</h2>
                     <p class="description">
                         Geleceğin güvenli sistem mimarileri ve siber savunma teknolojileri üzerinde çalışan bir geliştiriciyim. 
-                        Web dünyasında işlevsel arayüzler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber güvenliğini analiz ediyorum.
+                        Web dünyasında işlevsel çözümler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber analizlerini yapıyorum.
                     </p>
-                    <button class="btn" onclick="switchSection('projects')">Projelerimi İncele</button>
+                    <button class="btn" onclick="switchSection('projects')">Projelerim</button>
                 </div>
 
                 <div class="content-right">
                     <div class="hero-image-wrapper">
+                        <!-- Arka planı koyulaştırılmış hacker görsel alanı -->
                         <img src="undraw_hacker-mind_j91b.png" alt="Zyntional Hacker Mind" class="hero-image">
                     </div>
                 </div>
@@ -387,7 +375,7 @@
             </div>
         </div>
 
-        <!-- 2. YETENEKLER SAYFASI (GDG BURAYA DA EKLENDİ) -->
+        <!-- 2. YETENEKLER SAYFASI -->
         <div id="skills" class="section">
             <h1>Yetenekler</h1>
             <h2>Teknolojik Uzmanlık Alanlarım</h2>
@@ -396,7 +384,7 @@
                     <h3>Siber Güvenlik</h3>
                     <ul class="skill-list">
                         <li>• Kali Linux</li>
-                        <li>• OSINT & Shodan</li>
+                        <li>• OSINT & Aircrack-ng</li>
                         <li>• Ağ Güvenliği Analizi</li>
                         <li>• CTF Çözümleri</li>
                     </ul>
@@ -419,7 +407,6 @@
                         <li>• Donanım Güvenliği</li>
                     </ul>
                 </div>
-                <!-- YENİ TOPLULUK KUTUSU -->
                 <div class="skill-category">
                     <h3>Topluluk & Ekosistem</h3>
                     <ul class="skill-list">
