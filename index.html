@@ -6,12 +6,11 @@
     <title>Zyntional.dev // Portfolio</title>
     <style>
         :root {
-            /* Görseldeki o derin, zengin siber lacivert ve mavi tonları */
             --bg-color: #020617;
             --sidebar-color: rgba(15, 23, 42, 0.6);
             --text-light: #ffffff;
             --text-muted: #94a3b8;
-            --accent-color: #38bdf8; /* Görseldeki parlak mavi tonu */
+            --accent-color: #38bdf8; 
             --card-bg: rgba(30, 41, 59, 0.4);
             --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
@@ -23,14 +22,10 @@
         }
 
         body {
-            /* image_53774e.jpg görselindeki gibi çoklu ışık kaynaklı siber atmosfer */
             background-color: var(--bg-color);
             background-image: 
-                /* Sağ üstten sızan siber mavi/turkuaz ışık hüzmesi */
                 radial-gradient(circle at 85% 20%, rgba(56, 189, 248, 0.15) 0%, transparent 45%),
-                /* Sol alttan vuran derin lacivert/mor siber ışık */
                 radial-gradient(circle at 15% 85%, rgba(29, 78, 216, 0.2) 0%, transparent 50%),
-                /* Görselin sol altındaki o hafif teknolojik devre/çizgi hissini veren CSS deseni */
                 linear-gradient(rgba(255,255,255,0.005) 1px, transparent 1px),
                 linear-gradient(90deg, rgba(255,255,255,0.005) 1px, transparent 1px);
             background-size: 100% 100%, 100% 100%, 40px 40px, 40px 40px;
@@ -43,7 +38,7 @@
             overflow-x: hidden;
         }
 
-        /* SOL MENÜ (SIDEBAR) - Görseldeki şeffaf ekranlar gibi semi-transparent yapıldı */
+        /* SOL MENÜ (SIDEBAR) */
         .sidebar {
             width: 80px;
             background-color: var(--sidebar-color);
@@ -146,31 +141,36 @@
             position: relative;
         }
 
-        /* Görseldeki siber holo-ekran havasını yakalayan çerçeve */
+        /* GÖRSELİN SIRITMASINI ÖNLEYEN SİBER ERİME ALANI */
         .hero-image-wrapper {
             position: relative;
-            max-width: 480px;
+            max-width: 500px;
             width: 100%;
-            border-radius: 16px;
-            overflow: hidden;
-            box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.05), 
-                        0 20px 50px rgba(0, 0, 0, 0.6), 
-                        0 0 40px rgba(56, 189, 248, 0.15);
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: transform 0.5s ease;
         }
 
         .hero-image-wrapper:hover {
-            transform: translateY(-8px) scale(1.02);
-            box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.4), 
-                        0 25px 60px rgba(0, 0, 0, 0.8), 
-                        0 0 50px rgba(56, 189, 248, 0.3);
+            transform: translateY(-8px) scale(1.03);
         }
 
         .hero-image {
             width: 100%;
             height: auto;
             display: block;
-            border-radius: 16px;
+            border-radius: 24px;
+            
+            /* 1. SİHİRLİ DOKUNUŞ: Görselin beyaz piksellerini arka plana yedirir */
+            mix-blend-mode: lighten; 
+            opacity: 0.85;
+
+            /* 2. SİHİRLİ DOKUNUŞ: Görselin sert kenarlarını dairesel olarak yumuşatıp yok eder */
+            -webkit-mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+            mask-image: radial-gradient(circle, rgba(0,0,0,1) 55%, rgba(0,0,0,0) 100%);
+            
+            filter: drop-shadow(0 0 30px rgba(56, 189, 248, 0.2));
         }
 
         /* METİNLER */
@@ -206,7 +206,7 @@
             margin-bottom: 40px;
         }
 
-        /* BUTONLAR - Görseldeki "READ MORE" butonunun modern siber versiyonu */
+        /* BUTONLAR */
         .btn {
             display: inline-block;
             padding: 14px 35px;
@@ -214,7 +214,7 @@
             color: #ffffff;
             text-decoration: none;
             font-weight: 600;
-            border-radius: 50px; /* Görseldeki gibi tam yuvarlak buton */
+            border-radius: 50px; 
             transition: all 0.3s ease;
             background: rgba(56, 189, 248, 0.05);
             cursor: pointer;
@@ -229,7 +229,7 @@
             transform: translateY(-2px);
         }
 
-        /* YETENEKLER GRID - Cam Efektli (Glassmorphism) */
+        /* YETENEKLER GRID */
         .skills-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -367,7 +367,6 @@
 </head>
 <body>
 
-    <!-- DIKEY SOL MENÜ (CAM EFEKTLİ BARKOD SEÇENEKLERİ) -->
     <div class="sidebar">
         <div class="logo" onclick="switchSection('home')">Z.</div>
         
@@ -379,10 +378,8 @@
         </ul>
     </div>
 
-    <!-- ANA İÇERİK -->
     <div class="main-content">
 
-        <!-- 1. GİRİŞ SAYFASI -->
         <div id="home" class="section active">
             <div class="flex-container">
                 
@@ -394,7 +391,6 @@
                         Geleceğin güvenli sistem mimarileri ve siber savunma teknolojileri üzerinde çalışan bir geliştiriciyim. 
                         Web dünyasında işlevsel çözümler üretirken, Arduino ile donanımsal projelere hayat veriyor, Google Developer Groups (GDG) ekosistemini takip ediyor ve tüm bu sistemlerin siber analizlerini yapıyorum.
                     </p>
-                    <!-- Görseldeki tasarıma uygun oval buton -->
                     <button class="btn" onclick="switchSection('projects')">Projelerim</button>
                 </div>
 
@@ -407,7 +403,6 @@
             </div>
         </div>
 
-        <!-- 2. YETENEKLER SAYFASI -->
         <div id="skills" class="section">
             <h1>Yetenekler</h1>
             <h2>Teknolojik Uzmanlık Alanlarım</h2>
@@ -451,7 +446,6 @@
             </div>
         </div>
 
-        <!-- 3. PROJELER SAYFASI -->
         <div id="projects" class="section">
             <h1>Projeler</h1>
             <h2>Geliştirdiğim Öne Çıkan Çalışmalar</h2>
@@ -496,7 +490,6 @@
             </div>
         </div>
 
-        <!-- 4. İLETİŞİM SAYFASI -->
         <div id="contact" class="section">
             <h1>İletişim</h1>
             <h2>Bana Ulaşın</h2>
@@ -509,7 +502,6 @@
 
     </div>
 
-    <!-- SAYFA GEÇİŞ SİHRİ -->
     <script>
         function switchSection(sectionId) {
             document.querySelectorAll('.section').forEach(sec => {
